@@ -1,0 +1,15 @@
+{
+  "name": "math-bot",
+  "version": "1.0.0",
+  "description": "A Math Bot for Discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TJ",
+  "license": "ISC",
+  "devDependencies": {
+    "discord.js": "^11.3.2",
+    "sqlite3": "^4.0.2"
+  }
+}
