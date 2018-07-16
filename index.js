@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const sqlite = require('sqlite3').verbose();
-const token = '';
+const token = 'NDI1Nzg1OTAwMTgyNjY3Mjc1.Di2m2A.iGe4lOXaLoGZ7R7Jwct2XogFAIs';
 let bot = new Discord.Client();
 var pm;
 
@@ -34,7 +34,16 @@ bot.on('message', async (message) => {
             case 'absolute':
                 message.channel.send(abs(messageP[1]));
                 break;
-        }
+            case 'signup':
+                console.log(message.channel.type);
+                if(message.channel.type == 'dm') {
+                    signUp(messageP[1], messageP[2]);
+                    message.channel.send('You\'ve signed up!');
+                } else {
+                    message.channel.send('Use the DM channel instead');
+                }
+                break;
+        }   
     }
 });
 
@@ -75,6 +84,16 @@ function numOfGuilds() {
     db.close(); 
 }
 
+function signUp(username, password) {
+    let db = new sqlite.Database('data.db');
+    db.run(`INSERT INTO users(username, password) VALUES (?, ?)`, [username, password], (err) => {
+        if(err) {
+            console.log('SERVER ERROR - ' + err.message);
+        }
+    });
+    db.close();
+}
+
 function cosine(num) {
     return Math.cos(num);
 }
@@ -90,6 +109,7 @@ function help() {
     status - Returns the number of guilds Math Bot is on.
     cosine - Returns the cosine of the entered number.
     absolute - Returns the absolute value of the entered number.
+    signup - Create a Math Bot account.
     `;
 }
 
