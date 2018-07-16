@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const sqlite = require('sqlite3').verbose();
-const token = 'NDI1Nzg1OTAwMTgyNjY3Mjc1.Di2m2A.iGe4lOXaLoGZ7R7Jwct2XogFAIs';
+const token = '';
 let bot = new Discord.Client();
 var pm;
 
